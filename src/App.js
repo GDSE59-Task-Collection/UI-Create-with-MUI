@@ -5,13 +5,13 @@ import { Nav } from './components/nav/Nav';
 import { Footer } from './components/footer/Footer';
 import SignUp from './components/signup/Signup';
 import Login from './components/login/Login';
+import { RouteHandler } from './components/router/RouteHandler';
 
 function App() {
   return (
     <div className="App">
-      <Nav/>
-     <Login/>
-     <Footer/>
+     <Nav/>
+     <DataForm/>
     </div>
   );
 }
