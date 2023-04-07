@@ -5,11 +5,13 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import InputLabel from '@mui/material/InputLabel';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+
 
 
 export const DataForm = ()=>{
-    const paperStyle = {padding: 20, height:'80vh',width: '60vw',margin:'80px auto'}
+    const paperStyle = {padding: 20, height:'85vh',width: '60vw',margin:'80px auto'}
     return(
         
         <Grid>
@@ -22,7 +24,6 @@ export const DataForm = ()=>{
             <h1>Fill the data to register</h1>
             <div>
             <Avatar><AccountCircleIcon/></Avatar>
-            <h4>Basic Details</h4>
             </div>                       
             <TextField className="forminput" label="First Name" variant="outlined"/>
           
@@ -32,8 +33,7 @@ export const DataForm = ()=>{
             <TextField className="forminput" label="Address" variant="outlined" />
         
             <TextField className="forminput" label="Email" variant="outlined" />
-         
-        
+                
       
         <Select
           labelId="demo-simple-select-standard-label"
@@ -50,8 +50,6 @@ export const DataForm = ()=>{
           <MenuItem value={20}>Female</MenuItem>
         </Select>
     
-
-
         <Select
           labelId="demo-simple-select-standard-label"
           id="demo-simple-select-standard"
@@ -68,18 +66,18 @@ export const DataForm = ()=>{
           <MenuItem value={30}>DEP</MenuItem>
 
         </Select>
-
-
-
-
-
-
-
-
-
-          </Paper>
-          </FormControl>
-        </Grid>
+          
+          <Stack direction="row" spacing={2}>
+            <Button variant="outlined" color="success">
+                Save
+            </Button>
+            <Button variant="outlined" color="error">
+                Reset
+            </Button>
+         </Stack>
+         </Paper>
+        </FormControl>
+   </Grid>
         
     );
 }
