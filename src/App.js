@@ -6,6 +6,7 @@ import { Footer } from './components/footer/Footer';
 import SignUp from './components/signup/Signup';
 import Login from './components/login/Login';
 import { RouteHandler } from './components/router/RouteHandler';
+import { View } from './components/view/View';
 
 function App() {
   return (

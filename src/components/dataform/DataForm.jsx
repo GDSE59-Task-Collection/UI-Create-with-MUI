@@ -11,6 +11,17 @@ import { useState,useEffect } from 'react';
 import { Courses } from '../../data/Courses';
 import { Gender } from '../../data/Gender';
 import { FormDataHandler } from '../../handlers/FormDataHandler';
+import { View } from '../view/View'
+
+//get data from local storage
+const collectDataFromLocalStorage = () =>{
+  const data = localStorage.getItem('formDetails');
+  if(data){
+    return JSON.parse(data)
+  } else{
+    return []
+  }
+}
 
 export const DataForm = ()=>{
 
@@ -23,7 +34,7 @@ export const DataForm = ()=>{
   const [gender,setGender] = useState("");
   const [course,setCourse] = useState("");
 
-  const [formDetails,setFormDetails] = useState([]);
+  const [formDetails,setFormDetails] = useState(collectDataFromLocalStorage());
 
   const handleonsubmit = (e) =>{
     e.preventDefault()
@@ -40,6 +51,7 @@ export const DataForm = ()=>{
 
     setFormDetails([...formDetails,formData])
     FormDataHandler(formData);
+    View();
 
     setStuId("");
     setFirstName("")
@@ -54,6 +66,14 @@ export const DataForm = ()=>{
   useEffect(() =>{
     localStorage.setItem('formDetails',JSON.stringify(formDetails));
  },[formDetails]);
+
+ //delete data
+ const deleteData = (stuId) =>{
+    const deleteData = formDetails.filter((ele,index)=>{
+      return ele.stuId !== stuId
+    })
+    setFormDetails(deleteData)
+ }
 
     const paperStyle = {padding: 20, height:'85vh',width: '60vw',margin:'80px auto'}
     return(
@@ -165,9 +185,29 @@ export const DataForm = ()=>{
                 Reset
             </Button>
           </Stack>
-
+          
          </Paper>
         </form>
+        <div>
+          {formDetails.length > 0 && <>
+             <div>
+               <table>
+                 <thead>
+                   <th>Stu.ID</th>
+                   <th>First Name</th>
+                   <th>Last Name</th>
+                   <th>Email</th>
+                   <th>Course</th>
+                   <th>Opt</th>
+                 </thead>
+                 <tbody>
+                   <View formDetails = {formDetails} deleteData = {deleteData}/>
+                 </tbody>
+               </table>
+             </div>
+          </>}
+          {formDetails.length < 1 && <div> No Data Addded</div> } 
+        </div>
    </Grid>
         
     );
