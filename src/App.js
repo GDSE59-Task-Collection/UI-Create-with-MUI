@@ -13,6 +13,7 @@ function App() {
     <div className="App">
      <Nav/>
      <DataForm/>
+     <Footer/>
     </div>
   );
 }

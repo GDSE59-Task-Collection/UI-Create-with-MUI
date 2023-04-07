@@ -51,7 +51,7 @@ export const DataForm = ()=>{
 
     setFormDetails([...formDetails,formData])
     FormDataHandler(formData);
-    View();
+  
 
     setStuId("");
     setFirstName("")
@@ -75,7 +75,7 @@ export const DataForm = ()=>{
     setFormDetails(deleteData)
  }
 
-    const paperStyle = {padding: 20, height:'85vh',width: '60vw',margin:'80px auto'}
+    const paperStyle = {padding: 20, height:'105vh',width: '60vw',margin:'80px auto'}
     return(
         
         <Grid>
@@ -185,10 +185,7 @@ export const DataForm = ()=>{
                 Reset
             </Button>
           </Stack>
-          
-         </Paper>
-        </form>
-        <div>
+          <div className='tbl-view'>
           {formDetails.length > 0 && <>
              <div>
                <table>
@@ -208,6 +205,9 @@ export const DataForm = ()=>{
           </>}
           {formDetails.length < 1 && <div> No Data Addded</div> } 
         </div>
+         </Paper>
+        </form>
+        
    </Grid>
         
     );

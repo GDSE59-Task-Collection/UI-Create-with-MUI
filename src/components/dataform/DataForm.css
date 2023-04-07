@@ -14,3 +14,15 @@
     flex-direction: column;
     gap: 25px;
 }
+.tbl-view{
+    display: flex;
+    align-items: center;
+    justify-content: center;   
+}
+table{
+  width: 60vw;
+  font-size: 1.5rem;
+}
+tr,td,th{
+    border: 1px solid black;
+}
