@@ -7,9 +7,10 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Courses } from '../../data/Courses';
 import { Gender } from '../../data/Gender';
+import { FormDataHandler } from '../../handlers/FormDataHandler';
 
 export const DataForm = ()=>{
 
@@ -22,22 +23,38 @@ export const DataForm = ()=>{
   const [gender,setGender] = useState("");
   const [course,setCourse] = useState("");
 
+  const [formDetails,setFormDetails] = useState([]);
+
   const handleonsubmit = (e) =>{
     e.preventDefault()
-    
-    
+        
     const formData = {
-      formStuId:stuId,
-      formFirstName:firstName,
-      formLastName:lastname,
-      formAddress:address,
-      formEmail:email,
-      formGender:gender,
-      formCourse:course,
-
+      stuId,
+      firstName,
+      lastname,
+      address,
+      email,
+      gender,
+      course
     }
-    console.log(formData)
+
+    setFormDetails([...formDetails,formData])
+    FormDataHandler(formData);
+
+    setStuId("");
+    setFirstName("")
+    setLastName("")
+    setAddress("")
+    setEmail("")
+    setGender("")
+    setCourse("")
+
   }
+//save data in local storage
+  useEffect(() =>{
+    localStorage.setItem('formDetails',JSON.stringify(formDetails));
+ },[formDetails]);
+
     const paperStyle = {padding: 20, height:'85vh',width: '60vw',margin:'80px auto'}
     return(
         
