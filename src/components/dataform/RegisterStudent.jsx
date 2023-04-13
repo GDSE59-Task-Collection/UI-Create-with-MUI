@@ -1,6 +1,6 @@
 import { Avatar, Grid,Paper } from '@mui/material';
 import TextField from '@mui/material/TextField';
-import './DataForm.css'
+import './RegisterStudent.css'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
@@ -12,6 +12,8 @@ import { Courses } from '../../data/Courses';
 import { Gender } from '../../data/Gender';
 import { FormDataHandler } from '../../handlers/FormDataHandler';
 import { View } from '../view/View'
+import FormHelperText from '@mui/material/FormHelperText';
+import { DataFormCommon } from '../common/DataFormCommon'
 
 //get data from local storage
 const collectDataFromLocalStorage = () =>{
@@ -23,7 +25,7 @@ const collectDataFromLocalStorage = () =>{
   }
 }
 
-export const DataForm = ()=>{
+export const RegisterStudent = ()=>{
 
   //state management
   const [stuId,setStuId] = useState("")
@@ -34,7 +36,7 @@ export const DataForm = ()=>{
   const [gender,setGender] = useState("");
   const [course,setCourse] = useState("");
 
-  const [formDetails,setFormDetails] = useState(collectDataFromLocalStorage());
+  const [formDetails,setFormDetails] = useState({collectDataFromLocalStorage});
 
   const handleonsubmit = (e) =>{
     e.preventDefault()
@@ -50,7 +52,7 @@ export const DataForm = ()=>{
     }
 
     setFormDetails([...formDetails,formData])
-    FormDataHandler(formData);
+    // FormDataHandler(formData);
   
 
     setStuId("");
@@ -75,77 +77,75 @@ export const DataForm = ()=>{
     setFormDetails(deleteData)
  }
 
-    const paperStyle = {padding: 20, height:'105vh',width: '60vw',margin:'80px auto'}
+    const paperStyle = {padding: 20, 
+      height:'105vh',width: '60vw',margin:'80px auto'}
     return(
         
-        <Grid>
+        <Grid className='main-outer'>
             <form onSubmit = {handleonsubmit}>
           <Paper 
           elevation={10} 
           style={paperStyle}
           className="stu-detail-form"
           >
-            <h1>Fill the data to register</h1>
+            <h1>Please fill all the fields</h1>
             <div>
             <Avatar><AccountCircleIcon/></Avatar>
             </div>
 
-            <TextField 
-            label="Student Id" 
+            <DataFormCommon
+            className="forminput-age" 
+            label = "Student Id"  
             variant="outlined" 
             type="number"
             value = {stuId}
-            onChange = {e => setStuId(e.target.value)}
-            required
+            onChange = {setStuId}
+            required = "required"
             />
 
-            <TextField 
+            <DataFormCommon
             className="forminput" 
-            label="First Name" 
+            label = "First Name"  
             variant="outlined" 
             type="text"
             value = {firstName}
-            onChange = {e => setFirstName(e.target.value)}
-            required
+            onChange = {setFirstName}
+            required = "required"
             />
 
-            <TextField 
+           <DataFormCommon
             className="forminput" 
-            label="Last Name" 
+            label = "Last Name"  
             variant="outlined" 
             type="text"
             value = {lastname}
-            onChange = {e => setLastName(e.target.value)}
-            required
-            
+            onChange = {setLastName}
+            required = "required"
             />
 
-            <TextField 
-            className="forminput" 
-            label="Address" 
+            <DataFormCommon
+            className="forminput"  
+            label = "Address"  
             variant="outlined" 
-            type = "text" 
-            value= {address}
-            onChange = {e => setAddress(e.target.value)}
-            required
-            
-            />  
+            type="text"
+            value = {address}
+            onChange = {setAddress}
+            required = "required"
+            />
 
-            <TextField 
-            className="forminput" 
-            label="Email" 
+            <DataFormCommon
+            className="forminput"  
+            label = "Email"  
             variant="outlined" 
-            type = "email" 
+            type="email"
             value = {email}
-            onChange = {e => setEmail(e.target.value)}
-            required
-            
+            onChange = {setEmail}
+            required = "required"
             />
-                
       
         <Select
-          labelId="demo-simple-select-standard-label"
-          id="demo-simple-select-standard"
+          labelId="demo-simple-select-helper-label"
+          id="demo-simple-select-helper"
           className='input-data'
           value= {gender}
           onChange={e => setGender(e.target.value)}

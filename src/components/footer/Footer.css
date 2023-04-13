@@ -1,10 +1,10 @@
 .footer-outer{
     width: 100vw;
     height: 80px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(23, 23, 21, 0.717);
     position: fixed;
     bottom: 0;
-    
+    z-index: 5;
 
 }
 .cr-stm{
