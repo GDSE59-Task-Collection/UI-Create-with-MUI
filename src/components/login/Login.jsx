@@ -50,7 +50,7 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://source.unsplash.com/random)',
+            backgroundImage: 'url(https://static.vecteezy.com/system/resources/previews/002/136/381/original/mobile-application-development-free-vector.jpg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -68,6 +68,9 @@ export default function Login() {
               alignItems: 'center',
             }}
           >
+            <Typography component="h1" variant="h3">
+              Welcome to E-Register
+            </Typography>
             <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
               <LockOutlinedIcon />
             </Avatar>

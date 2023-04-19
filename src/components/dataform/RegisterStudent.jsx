@@ -16,14 +16,14 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { DataFormCommon } from '../common/DataFormCommon'
 
 //get data from local storage
-const collectDataFromLocalStorage = () =>{
-  const data = localStorage.getItem('formDetails');
-  if(data){
-    return JSON.parse(data)
-  } else{
-    return []
-  }
-}
+// const collectDataFromLocalStorage = () =>{
+//   const data = localStorage.getItem('formDetails');
+//   if(data){
+//     return JSON.parse(data)
+//   } else{
+//     return []
+//   }
+// }
 
 export const RegisterStudent = ()=>{
 
@@ -36,7 +36,7 @@ export const RegisterStudent = ()=>{
   const [gender,setGender] = useState("");
   const [course,setCourse] = useState("");
 
-  const [formDetails,setFormDetails] = useState({collectDataFromLocalStorage});
+  const [formDetails,setFormDetails] = useState([]);
 
   const handleonsubmit = (e) =>{
     e.preventDefault()
@@ -50,6 +50,8 @@ export const RegisterStudent = ()=>{
       gender,
       course
     }
+
+    console.log(formData)
 
     setFormDetails([...formDetails,formData])
     // FormDataHandler(formData);
@@ -185,26 +187,7 @@ export const RegisterStudent = ()=>{
                 Reset
             </Button>
           </Stack>
-          <div className='tbl-view'>
-          {formDetails.length > 0 && <>
-             <div>
-               <table>
-                 <thead>
-                   <th>Stu.ID</th>
-                   <th>First Name</th>
-                   <th>Last Name</th>
-                   <th>Email</th>
-                   <th>Course</th>
-                   <th>Opt</th>
-                 </thead>
-                 <tbody>
-                   <View formDetails = {formDetails} deleteData = {deleteData}/>
-                 </tbody>
-               </table>
-             </div>
-          </>}
-          {formDetails.length < 1 && <div> No Data Addded</div> } 
-        </div>
+          
          </Paper>
         </form>
         

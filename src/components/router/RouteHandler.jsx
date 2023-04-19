@@ -3,7 +3,7 @@ import Nav  from '../nav/Nav.jsx'
 import Login  from '../login/Login.jsx'
 import SignUp  from '../signup/Signup.jsx'
 import { RegisterStudent } from '../dataform/RegisterStudent.jsx'
-import { View } from '../view/View.js'
+import { View } from '../view/View'
 
 export const RouteHandler = () =>{
     return(

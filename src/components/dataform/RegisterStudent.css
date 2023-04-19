@@ -11,6 +11,8 @@
 .main-outer{
     background: rgb(75,181,238);
     background: linear-gradient(90deg, rgb(241, 176, 55) 0%, rgb(232, 231, 128) 0%, rgb(241, 120, 14) 100%); 
+    overflow: hidden;
+
 }
 .stu-detail-form{
     align-items: flex-start;
