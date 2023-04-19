@@ -1,0 +1,17 @@
+.tbl-view{
+    margin-top: 100px;
+    width: 80vw;
+    
+}
+th ,td{
+    border-radius: 10px;
+}
+th{
+    border: 3px solid coral;
+}
+td{
+    border: 0.5px solid rgb(50, 163, 167);
+}
+tr{
+    margin-bottom: 20px;
+}

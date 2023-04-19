@@ -13,7 +13,7 @@ export const RouteHandler = () =>{
                <Route path="Sign-up" element={<SignUp/>}/>
                <Route path="Login" element={<Login/>}/>
                <Route path="Register Student" element={<RegisterStudent/>}/>
-               <Route path="View" element={View}/>
+               <Route path="View" element={<View/>}/>
             </Routes>
         </>
     );

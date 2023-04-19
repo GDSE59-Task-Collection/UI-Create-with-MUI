@@ -16,14 +16,14 @@ import FormHelperText from '@mui/material/FormHelperText';
 import { DataFormCommon } from '../common/DataFormCommon'
 
 //get data from local storage
-// const collectDataFromLocalStorage = () =>{
-//   const data = localStorage.getItem('formDetails');
-//   if(data){
-//     return JSON.parse(data)
-//   } else{
-//     return []
-//   }
-// }
+const collectDataFromLocalStorage = () =>{
+  const data = localStorage.getItem('formDetails');
+  if(data){
+    return JSON.parse(data)
+  } else{
+    return []
+  }
+}
 
 export const RegisterStudent = ()=>{
 
@@ -35,8 +35,10 @@ export const RegisterStudent = ()=>{
   const [email,setEmail] = useState("");
   const [gender,setGender] = useState("");
   const [course,setCourse] = useState("");
-
-  const [formDetails,setFormDetails] = useState([]);
+ 
+  //If assign [] to useState(),it is chenge the state of localstorage data as empty value ue to empty array
+  // in every rendering. You may try it 
+  const [formDetails,setFormDetails] = useState(collectDataFromLocalStorage());
 
   const handleonsubmit = (e) =>{
     e.preventDefault()
@@ -55,8 +57,6 @@ export const RegisterStudent = ()=>{
 
     setFormDetails([...formDetails,formData])
     // FormDataHandler(formData);
-  
-
     setStuId("");
     setFirstName("")
     setLastName("")
